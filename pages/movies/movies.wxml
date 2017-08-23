@@ -4,7 +4,7 @@
 <view class="search">
   <icon type="search" size="13" color="#405f80" class="search-img"></icon>
   <input type="text" placeholder="战狼。。。。" placeholder-class="placeholder" bindfocus="onBindFocus"
-         bindblur="onBindBlur"/>
+         bindconfirm="onBindComfirm" value="{{intValue}}"/>
   <image src="/images/icon/xx.png" bindtap="onCancelImgTap" class="xx-img" wx:if="{{searchPannelShow}}"></image>
 </view>
 <view class="container" wx:if="{{containerShow}}">
@@ -20,5 +20,5 @@
 </view>
 
 <view class="search-panel" wx:if="{{searchPannelShow}}">
-  <template is="movieGridTemplate"/>
+  <template is="movieGridTemplate" data="{{...searchResult}}"/>
 </view>
