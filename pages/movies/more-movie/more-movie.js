@@ -3,10 +3,6 @@ var util=require('../../../utils/utils')
 var app=getApp();
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     movies:{},
     navigateTitle:"",
@@ -43,6 +39,13 @@ Page({
   onReady:function (e) {
     wx.setNavigationBarTitle({
       title: this.data.navigateTitle
+    })
+  },
+  onMovieTap:function (e) {
+    var movieId=e.currentTarget.dataset.movieid;
+    console.log(movieId);
+    wx.navigateTo({
+      url: '/pages/movies/movie-detail/movie-detail?id='+movieId
     })
   },
   onPullDownRefresh:function (e) {

@@ -28,6 +28,13 @@ Page({
       url: 'more-movie/more-movie?category='+category
     })
   },
+  onMovieTap:function (e) {
+    var movieId=e.currentTarget.dataset.movieid;
+    console.log(movieId);
+    wx.navigateTo({
+      url: 'movie-detail/movie-detail?id='+movieId
+    })
+  },
   getMovieListData:function (url,settedKey,categoryTitle) {
     var that=this;
     wx.request({
@@ -61,7 +68,6 @@ Page({
     this.getMovieListData(searchUrl,"searchResult","")
   },
   onCancelImgTap:function (e) {
-    console.log(e);
     this.setData({
       containerShow:true,
       searchPannelShow:false,
@@ -69,6 +75,7 @@ Page({
       intValue:""
     })
   },
+
   processDoubanData:function (moviesDouban,settedKey,categoryTitle) {
     var movies=[];
     console.log(moviesDouban)

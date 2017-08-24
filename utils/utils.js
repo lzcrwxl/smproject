@@ -31,6 +31,23 @@ function http(url, callBack) {
   })
 }
 
+function getMovieListData(url,settedKey,categoryTitle,callBack) {
+  var that=this;
+  wx.request({
+    url: url,
+    method: "GET",
+    header: {
+      "Content-Type": "json"
+    },
+    success: res => {
+      callBack(res.data,settedKey,categoryTitle)
+    },
+    fail: function (error) {
+      console.log(error)
+    }
+  })
+}
+
 function convertToCastString(casts) {
   var castsjoin = "";
   for (var idx in casts) {
@@ -55,5 +72,6 @@ module.exports = {
   convertToStarsArray: convertToStarsArray,
   http: http,
   convertToCastString:convertToCastString,
-  convertToCastInfos:convertToCastInfos
+  convertToCastInfos:convertToCastInfos,
+  getMovieListData:getMovieListData
 }
